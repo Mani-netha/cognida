@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application</title>
+    <style>
+        div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu a {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
+}
+        </style>
+        </head>
+        <body>
+        
+        <div class="scrollmenu">
+            <a class="nav-link active" aria-current="page" href="index.html">Upload</a>
+            <a href="List.html">List</a>
+            <a href="Profile.html">Profile</a>
+          </div>
+    <script>
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+        
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+        }
+        
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+        }
+        </script>
+    
+</head>
+<body>
+    <h2><i><b>1.Canvas Line</b></i></h2>
+    <canvas id="mycanvas" width="300" height="200" style="border: 1px solid rgb(209, 33, 33)" >
+    
+    </canvas>
+    <h2><i><b>2.Canvas Circle.</b></i></h2>
+    <canvas id="mycanvas2" width="300" height="200" style="border: 1px solid rgb(209, 33, 33)" >
+    </canvas>
+    <h2><i><b>3.Canvas Path.</b></i></h2>
+    <canvas id="mycanvas3" width="300" height="200" style="border: 1px solid rgb(209, 33, 33)" >
+    </canvas>
+    <h2><i><b>4.Canvas Text.</b></i></h2>
+    <canvas id="mycanvas4" width="300" height="100" style="border: 1px solid rgb(209, 33, 33)" >
+    </canvas>
+    <h2><i><b>5.Canvas Rectangle.</b></i></h2>
+    <canvas id="mycanvas5" width="300" height="200" style="border: 1px solid rgb(209, 33, 33)" >
+    </canvas>
+    <h2><i><b>6.Canvas Image Drawing.</b></i></h2>
+    <img id="image" src="image.jpeg" width="300" height="500"/>
+    <canvas id="mycanvas6" width="300" height="500" style="border: 1px solid rgb(209, 33, 33)" >
+    </canvas>
+    <button id="button">Draw Image</button>
+    <script>
+        var c=document.getElementById("mycanvas");
+        var ctx=c.getContext("2d");
+        ctx.moveTo(0,0);
+        ctx.lineTo(300,200);
+        ctx.stroke();
+
+        var c2=document.getElementById("mycanvas2");
+        var ctx2=c2.getContext("2d");
+        ctx2.beginPath();
+        ctx2.arc(95,50,40,0,2*Math.PI);
+        ctx2.stroke();
+
+        var c3=document.getElementById("mycanvas3");
+        var ctx3=c3.getContext("2d");
+        ctx3.beginPath();   
+        ctx3.lineWidth = "3";
+        ctx3.strokeStyle = "green";  
+        ctx3.moveTo(0, 0);
+        ctx3.lineTo(160, 160);
+        ctx3.lineTo(200, 160);
+        ctx3.stroke();
+        ctx3.beginPath();
+        ctx3.strokeStyle = "blue"; 
+        ctx3.moveTo(0, 0);
+        ctx3.lineTo(50, 170);
+        ctx3.stroke();          
+        ctx3.closePath(); 
+
+        var c4=document.getElementById("mycanvas4");
+        var ctx4=c4.getContext("2d");
+        ctx4.font = "30px Arial";
+        ctx4.fillText("Welcome to FSWD", 10, 50);
+
+        var c5=document.getElementById("mycanvas5");
+        var ctx5=c5.getContext("2d");
+        ctx5.beginPath();
+        ctx5.rect(20, 20, 250, 150);
+        ctx5.stroke();
+
+        var button =document.getElementById("button");
+        button.addEventListener("click",function(event){
+            var image = document.getElementById("image");
+            var canvas=document.getElementById("mycanvas6");
+            var context=canvas.getContext("2d");
+            context.drawImage(image,0,0,canvas.width,canvas.height)
+        })
+    </script>
+    
+
+    
+</body>
+</html>
